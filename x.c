@@ -796,7 +796,7 @@ xloadcols(void)
 			else
 				die("could not allocate color %d\n", i);
 		}
-	+
+
 	/* set alpha value of bg color */
 	if (opt_alpha)
 		alpha = strtof(opt_alpha, NULL);
@@ -1139,7 +1139,7 @@ xinit(int cols, int rows)
 	xloadfonts(usedfont, 0);
 
 	/* colors */
-	xw.cmap = XDefaultColormap(xw.dpy, parent, xw.vis, None);
+	xw.cmap = XCreateColormap(xw.dpy, parent, xw.vis, None);
 	xloadcols();
 
 	/* adjust fixed window geometry */
@@ -2007,7 +2007,7 @@ main(int argc, char *argv[])
 		allowaltscreen = 0;
 		break;
 	case 'A':
-		opt-alpha=EARGF(usage());
+		opt_alpha=EARGF(usage());
 		break;
 	case 'c':
 		opt_class = EARGF(usage());
